@@ -1,4 +1,4 @@
-# Basic Portfolio
+# Psychic Game
 
 ## Site pictures
 ![Site](page.jpg)
