@@ -2,6 +2,7 @@ var wins=0;
 var losses=0;
 var guessLeft=9;
 var userGuessArr=[];
+var userInput;
 //var compGuessArr=[];
 var str = "abcdefghijklmnopqrstuvwxyz";
 var result='';
@@ -28,12 +29,22 @@ function userEnterValue(){
 var input = document.getElementById("input");
 document.onkeydown = function(event) {
     userGuess=event.key;
+    if(userGuessArr.includes(userGuess)){
+        alert("Already guessed ! Try different character !");
+        userInput = "";
+    }
+    else if(str.includes(userGuess)){
     userGuessArr.push(userGuess);
-    var userInput = userGuessArr.join(" , ");
+    userInput = userGuessArr.join(" , ");
     document.getElementById("userInput").innerHTML = userInput;
     console.log("join: "+userInput);
+    console.log("User array : " + userGuessArr);
+    }
+    else{
+        alert("Not an appropriate key !");   
+        userInput = ""; 
+    }
     play(userGuess);
-
 }
 }
 
@@ -51,8 +62,10 @@ else if(guessLeft==1){
     reset();
 }
 else{
+    if(userInput != ""){
     guessLeft = guessLeft - 1;
     displayGuessLeft();
+    }
 }
 }
 
